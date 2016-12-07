@@ -23,16 +23,6 @@ def normalize_string(u_str):
     u_str = _unidecode_string(u_str)
     return u_str
 
-def get_files_in_directory_skip_hidden(path):
-    dirs = get_files_in_directory(path)
-    return filter(lambda f: not f.startswith('.'), dirs) # remove files names starting w/ dot
-
-def get_files_in_directory(path):
-    return next(os.walk(path))[2]
-
-def get_folders_in_directory(path):
-    return next(os.walk(path))[1]
-
 def _unidecode_string(u_str):
     return unidecode.unidecode(u_str)
 
@@ -58,3 +48,20 @@ def json_pretty_print(json_str):
 def wait_n_seconds(seconds=1):
     print "waiting %s seconds" % (seconds)
     time.sleep(seconds) # sleep for passed number of seconds else default to 1 second
+
+
+def get_files_in_directory_skip_hidden(path):
+    dirs = get_files_in_directory(path)
+    return filter(lambda f: not f.startswith('.'), dirs) # remove files names starting w/ dot
+
+def get_files_in_directory(path):
+    return next(os.walk(path))[2]
+
+def get_folders_in_directory(path):
+    return next(os.walk(path))[1]
+
+def check_file_or_folder_exists(path):
+    return os.path.exists(path)
+
+def check_file_exists(path):
+    return os.path.isfile(path)

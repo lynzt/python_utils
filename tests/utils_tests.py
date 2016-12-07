@@ -36,15 +36,27 @@ class UtilsTests(unittest.TestCase):
         self.assertEqual(utils.strip_trailing_char('abc123,', ','), 'abc123')
 
     def get_folders_in_directory(self):
-        dirs = utils.get_files_in_directory('public')
+        dirs = utils.get_files_in_directory('tests/data')
         self.assertEqual(len(dirs), 3)
 
     def test_get_files_in_directory(self):
-        files = utils.get_files_in_directory('dev')
-        self.assertEqual(len(files), 3)
+        files = utils.get_files_in_directory('tests/data')
+        self.assertEqual(len(files), 4)
 
     def test_get_files_in_directory_skip_hidden(self):
-        files = utils.get_files_in_directory_skip_hidden('dev')
+        files = utils.get_files_in_directory_skip_hidden('tests/data')
         self.assertEqual(len(files), 2)
+
+    def test_check_file_or_folder_exists(self):
+        self.assertTrue(utils.check_file_or_folder_exists('tests/data/folder1'))
+        self.assertFalse(utils.check_file_or_folder_exists('tests/data/folder5'))
+        self.assertFalse(utils.check_file_or_folder_exists('tests/nofolder/folder1'))
+
+    def test_check_file_exists(self):
+        self.assertTrue(utils.check_file_exists('tests/data/file1.txt'))
+        self.assertFalse(utils.check_file_exists('tests/data/folder1'))
+        self.assertFalse(utils.check_file_exists('tests/data/file5.txt'))
+
+        # self.assertEqual(len(files), 2)
 
 # python -m unittest discover -s tests -p "*_tests.py"
