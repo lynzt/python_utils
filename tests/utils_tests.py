@@ -57,6 +57,12 @@ class UtilsTests(unittest.TestCase):
         self.assertFalse(utils.check_file_exists('tests/data/folder1'))
         self.assertFalse(utils.check_file_exists('tests/data/file5.txt'))
 
-        # self.assertEqual(len(files), 2)
+    def test_move_file(self):
+        path1 = 'tests/data/folder2/'
+        path2 = 'tests/data/folder3/'
+        utils.move_file(path1 + 'file3.txt', path2 + 'file3.txt')
+        self.assertTrue(utils.check_file_exists(path2 + 'file3.txt'))
+        utils.move_file(path2 + 'file3.txt', path1 + 'file3.txt')
+        self.assertTrue(utils.check_file_exists(path1 + 'file3.txt'))
 
 # python -m unittest discover -s tests -p "*_tests.py"

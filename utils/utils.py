@@ -63,5 +63,9 @@ def get_folders_in_directory(path):
 def check_file_or_folder_exists(path):
     return os.path.exists(path)
 
+def move_file(from_path, to_path):
+    os.rename(from_path, to_path)
+    # return os.path.exists(path)
+
 def check_file_exists(path):
     return os.path.isfile(path)
