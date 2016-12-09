@@ -71,4 +71,8 @@ class UtilsTests(unittest.TestCase):
         results = utils.request_json(url)
         self.assertEqual(results['itemListElement'][0]['@type'], 'EntitySearchResult')
 
+    def test_encode_uri_string(self):
+        self.assertEqual(utils.encode_uri_string('abc'), 'abc')
+        self.assertEqual(utils.encode_uri_string('AT&T Inc.'), 'AT%26T+Inc.')
+
 # APIKEY=key_here python -m unittest discover -s tests -p "*_tests.py"

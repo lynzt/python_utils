@@ -4,6 +4,7 @@ import requests
 import datetime
 import time
 import os
+import urllib
 from bs4 import BeautifulSoup
 
 def request_html(url):
@@ -16,6 +17,9 @@ def request_json(url):
 
 def soupify_html(html):
     return BeautifulSoup(html, "html5lib")
+
+def encode_uri_string(str):
+    return urllib.quote_plus(str)
 
 def get_current_date():
     return datetime.datetime.now()
