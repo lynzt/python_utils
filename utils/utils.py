@@ -10,6 +10,10 @@ def request_html(url):
     r = requests.get(url)
     return r.text
 
+def request_json(url):
+    r = requests.get(url)
+    return r.json
+
 def soupify_html(html):
     return BeautifulSoup(html, "html5lib")
 
@@ -48,6 +52,12 @@ def json_pretty_print(json_str):
 def wait_n_seconds(seconds=1):
     print "waiting %s seconds" % (seconds)
     time.sleep(seconds) # sleep for passed number of seconds else default to 1 second
+
+
+# def convert_name_to_websafe(string):
+#     string = string.lower()
+#     string = re.sub('[\s\.,\&\(\)']', '-', string)
+#     return string;
 
 
 def get_files_in_directory_skip_hidden(path):
