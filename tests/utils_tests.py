@@ -1,3 +1,4 @@
+import os
 import unittest
 from freezegun import freeze_time
 import datetime
@@ -65,4 +66,9 @@ class UtilsTests(unittest.TestCase):
         utils.move_file(path2 + 'file3.txt', path1 + 'file3.txt')
         self.assertTrue(utils.check_file_exists(path1 + 'file3.txt'))
 
-# python -m unittest discover -s tests -p "*_tests.py"
+    def test_request_json(self):
+        url = 'https://kgsearch.googleapis.com/v1/entities:search?query=GENERAL MILLS&key=%s&limit=1' % os.environ["APIKEY"]
+        results = utils.request_json(url)
+        self.assertEqual(results['itemListElement'][0]['@type'], 'EntitySearchResult')
+
+# APIKEY=key_here python -m unittest discover -s tests -p "*_tests.py"
