@@ -16,7 +16,8 @@ def request_json(url):
     return json.loads(r.text)
 
 def soupify_html(html):
-    return BeautifulSoup(html, "html5lib")
+    return BeautifulSoup(html, "lxml")
+    # return BeautifulSoup(html, "html5lib")
 
 def encode_uri_string(str):
     return urllib.quote_plus(str)
