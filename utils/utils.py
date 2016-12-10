@@ -74,7 +74,9 @@ def check_file_or_folder_exists(path):
 
 def move_file(from_path, to_path):
     os.rename(from_path, to_path)
-    # return os.path.exists(path)
+
+def remove_file(file_to_remove):
+    os.remove(file_to_remove)
 
 def check_file_exists(path):
     return os.path.isfile(path)
