@@ -54,6 +54,9 @@ def strip_trailing_char(str, char):
 def json_pretty_print(json_str):
     print json.dumps(json_str, indent=4, separators=(',', ': '))
 
+def get_fist_char(string):
+    return string[0]
+
 def wait_n_seconds(seconds=1):
     print "waiting %s seconds" % (seconds)
     time.sleep(seconds) # sleep for passed number of seconds else default to 1 second

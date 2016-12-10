@@ -75,4 +75,11 @@ class UtilsTests(unittest.TestCase):
         self.assertEqual(utils.encode_uri_string('abc'), 'abc')
         self.assertEqual(utils.encode_uri_string('AT&T Inc.'), 'AT%26T+Inc.')
 
+    def test_get_fist_char(self):
+        self.assertEqual(utils.get_fist_char('abc'), 'a')
+        self.assertEqual(utils.get_fist_char('hank'), 'h')
+        self.assertEqual(utils.get_fist_char('123'), '1')
+        self.assertEqual(utils.get_fist_char('&ttt'), '&')
+
+
 # APIKEY=key_here python -m unittest discover -s tests -p "*_tests.py"
