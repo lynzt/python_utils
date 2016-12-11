@@ -5,6 +5,7 @@ import datetime
 import time
 import os
 import urllib
+from slugify import slugify
 from bs4 import BeautifulSoup
 
 def request_html(url):
@@ -60,6 +61,10 @@ def get_fist_char(string):
 def wait_n_seconds(seconds=1):
     print "waiting %s seconds" % (seconds)
     time.sleep(seconds) # sleep for passed number of seconds else default to 1 second
+
+
+def slugify_string(str):
+    return slugify(unicode(str))
 
 
 def get_files_in_directory_skip_hidden(path):

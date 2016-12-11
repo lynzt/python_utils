@@ -81,5 +81,12 @@ class UtilsTests(unittest.TestCase):
         self.assertEqual(utils.get_fist_char('123'), '1')
         self.assertEqual(utils.get_fist_char('&ttt'), '&')
 
+    def test_slugify_string(self):
+        self.assertEqual(utils.slugify_string('  harry j   potter  '), 'harry-j-potter')
+        self.assertEqual(utils.slugify_string('hank green'), 'hank-green')
+        self.assertEqual(utils.slugify_string('AT&T Inc.'), 'att-inc')
+        self.assertEqual(utils.slugify_string('A10 Networks, Inc.'), 'a10-networks-inc')
+        self.assertEqual(utils.slugify_string('58.com Inc..'), '58com-inc')
+
 
 # APIKEY=key_here python -m unittest discover -s tests -p "*_tests.py"

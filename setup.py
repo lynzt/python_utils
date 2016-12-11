@@ -7,4 +7,5 @@ setup(name='python_utils',
     author='lynzt',
     url='https://github.com/lynzt/python_utils',
     packages=['utils'],
+    install_requires=['slugify'],
     )
