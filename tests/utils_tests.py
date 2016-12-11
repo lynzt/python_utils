@@ -6,7 +6,7 @@ from utils import utils
 
 class UtilsTests(unittest.TestCase):
     def test_soupify_html(self):
-        soup = utils.soupify_html('<html><title>testing</title></html>')
+        soup = utils.soupify_html('<html><title>testing</title></html>', 'lxml')
         self.assertEqual(soup.title.string, 'testing')
 
     def test_get_current_date(self):

@@ -16,9 +16,11 @@ def request_json(url):
     r = requests.get(url)
     return json.loads(r.text)
 
-def soupify_html(html):
-    return BeautifulSoup(html, "lxml")
-    # return BeautifulSoup(html, "html5lib")
+def soupify_html(html, type):
+    if type == 'lxml':
+        return BeautifulSoup(html, "lxml")
+    elif type == 'html5lib':
+        return BeautifulSoup(html, "html5lib")
 
 def encode_uri_string(str):
     return urllib.quote_plus(str)
