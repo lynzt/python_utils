@@ -23,8 +23,8 @@ def soupify_html(html, type):
         return BeautifulSoup(html, "html5lib")
 
 def get_and_soupify(url, type):
-    html = utils.request_html(url)
-    return utils.soupify_html(html, type)
+    html = request_html(url)
+    return soupify_html(html, type)
 
 def encode_uri_string(str):
     return urllib.quote_plus(str)
