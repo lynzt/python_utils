@@ -68,29 +68,5 @@ def wait_n_seconds(seconds=1):
     print "waiting %s seconds" % (seconds)
     time.sleep(seconds) # sleep for passed number of seconds else default to 1 second
 
-
 def slugify_string(str):
     return slugify(unicode(str))
-
-
-def get_files_in_directory_skip_hidden(path):
-    dirs = get_files_in_directory(path)
-    return filter(lambda f: not f.startswith('.'), dirs) # remove files names starting w/ dot
-
-def get_files_in_directory(path):
-    return next(os.walk(path))[2]
-
-def get_folders_in_directory(path):
-    return next(os.walk(path))[1]
-
-def check_file_or_folder_exists(path):
-    return os.path.exists(path)
-
-def move_file(from_path, to_path):
-    os.rename(from_path, to_path)
-
-def remove_file(file_to_remove):
-    os.remove(file_to_remove)
-
-def check_file_exists(path):
-    return os.path.isfile(path)

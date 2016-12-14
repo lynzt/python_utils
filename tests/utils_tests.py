@@ -40,32 +40,6 @@ class UtilsTests(unittest.TestCase):
         dirs = utils.get_files_in_directory('tests/data')
         self.assertEqual(len(dirs), 3)
 
-    def test_get_files_in_directory(self):
-        files = utils.get_files_in_directory('tests/data')
-        self.assertEqual(len(files), 4)
-
-    def test_get_files_in_directory_skip_hidden(self):
-        files = utils.get_files_in_directory_skip_hidden('tests/data')
-        self.assertEqual(len(files), 2)
-
-    def test_check_file_or_folder_exists(self):
-        self.assertTrue(utils.check_file_or_folder_exists('tests/data/folder1'))
-        self.assertFalse(utils.check_file_or_folder_exists('tests/data/folder5'))
-        self.assertFalse(utils.check_file_or_folder_exists('tests/nofolder/folder1'))
-
-    def test_check_file_exists(self):
-        self.assertTrue(utils.check_file_exists('tests/data/file1.txt'))
-        self.assertFalse(utils.check_file_exists('tests/data/folder1'))
-        self.assertFalse(utils.check_file_exists('tests/data/file5.txt'))
-
-    def test_move_file(self):
-        path1 = 'tests/data/folder2/'
-        path2 = 'tests/data/folder3/'
-        utils.move_file(path1 + 'file3.txt', path2 + 'file3.txt')
-        self.assertTrue(utils.check_file_exists(path2 + 'file3.txt'))
-        utils.move_file(path2 + 'file3.txt', path1 + 'file3.txt')
-        self.assertTrue(utils.check_file_exists(path1 + 'file3.txt'))
-
     def test_request_json(self):
         url = 'https://kgsearch.googleapis.com/v1/entities:search?query=GENERAL MILLS&key=%s&limit=1' % os.environ["APIKEY"]
         results = utils.request_json(url)
