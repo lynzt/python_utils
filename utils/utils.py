@@ -5,6 +5,7 @@ import datetime
 import time
 import os
 import urllib
+import urlparse
 from slugify import slugify
 from bs4 import BeautifulSoup
 
@@ -28,6 +29,9 @@ def get_and_soupify(url, type):
 
 def encode_uri_string(str):
     return urllib.quote_plus(str)
+
+def parse_url_string(str):
+    return urlparse.urlparse(str)
 
 def get_current_date():
     return datetime.datetime.now()

@@ -62,5 +62,22 @@ class UtilsTests(unittest.TestCase):
         self.assertEqual(utils.slugify_string('A10 Networks, Inc.'), 'a10-networks-inc')
         self.assertEqual(utils.slugify_string('58.com Inc..'), '58com-inc')
 
+    def test_parse_url_string(self):
+        url_components = utils.parse_url_string('http://google.com')
+        self.assertEqual(url_components.scheme, 'http')
+        self.assertEqual(url_components.netloc, 'google.com')
+        self.assertEqual(url_components.path, '')
+        self.assertEqual(url_components.params, '')
+        self.assertEqual(url_components.query, '')
+        self.assertEqual(url_components.fragment, '')
+
+        url_components = utils.parse_url_string('https://www.youtube.com/watch?v=3gkm7oafWxs')
+        self.assertEqual(url_components.scheme, 'https')
+        self.assertEqual(url_components.netloc, 'www.youtube.com')
+        self.assertEqual(url_components.path, '/watch')
+        self.assertEqual(url_components.params, '')
+        self.assertEqual(url_components.query, 'v=3gkm7oafWxs')
+        self.assertEqual(url_components.fragment, '')
+
 
 # APIKEY=key_here python -m unittest discover -s tests -p "*_tests.py"
