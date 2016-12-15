@@ -85,7 +85,8 @@ class UtilsTests(unittest.TestCase):
         self.assertEqual(utils.get_base_url('https', 'www.youtube.com'), 'https://www.youtube.com')
 
     def test_remove_special_chars(self): # TODO: this is lame... fix this
-        self.assertEqual(utils.remove_special_chars('Federico F. Peña'), 'Federico F. Pena')
-        self.assertEqual(utils.remove_special_chars('Montréal, über, 12.89, Mère, Françoise, noël, 889'), 'Montreal, uber, 12.89, Mere, Francoise, noel, 889')
+        self.assertEqual(utils.normalize_string(u'Federico F. Peña'), 'Federico F. Pena')
+        self.assertEqual(utils.normalize_string('Federico F. Peña'), 'Federico F. Pena')
+        self.assertEqual(utils.normalize_string(u'Montréal, über, 12.89, Mère, Françoise, noël, 889'), 'Montreal, uber, 12.89, Mere, Francoise, noel, 889')
 
 # APIKEY=key_here python -m unittest discover -s tests -p "*_tests.py"

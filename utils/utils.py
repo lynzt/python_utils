@@ -43,11 +43,12 @@ def get_current_year():
     return (get_current_date()).year
 
 def normalize_string(u_str):
+    if _is_string(u_str):
+        u_str = unicode(u_str, 'utf-8')
     return unidecode.unidecode(u_str)
 
-def remove_special_chars(u_str):
-    u_str = unicode(u_str, 'utf-8')
-    return unidecode.unidecode(u_str)
+def _is_string(x):
+    return isinstance(x, str)
 
 # merge data into main dict...
 def merge_dictionary_and_array_dictionary(base_dict, array_dict_data_to_merge, base_dict_key):
