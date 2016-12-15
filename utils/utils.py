@@ -43,10 +43,10 @@ def get_current_year():
     return (get_current_date()).year
 
 def normalize_string(u_str):
-    u_str = _unidecode_string(u_str)
-    return u_str
+    return unidecode.unidecode(u_str)
 
-def _unidecode_string(u_str):
+def remove_special_chars(u_str):
+    u_str = unicode(u_str, 'utf-8')
     return unidecode.unidecode(u_str)
 
 # merge data into main dict...

@@ -1,3 +1,4 @@
+# coding: utf-8
 import os
 import unittest
 from freezegun import freeze_time
@@ -82,5 +83,9 @@ class UtilsTests(unittest.TestCase):
     def test_get_base_url(self):
         self.assertEqual(utils.get_base_url('http', 'www.google.com'), 'http://www.google.com')
         self.assertEqual(utils.get_base_url('https', 'www.youtube.com'), 'https://www.youtube.com')
+
+    def test_remove_special_chars(self): # TODO: this is lame... fix this
+        self.assertEqual(utils.remove_special_chars('Federico F. Peña'), 'Federico F. Pena')
+        self.assertEqual(utils.remove_special_chars('Montréal, über, 12.89, Mère, Françoise, noël, 889'), 'Montreal, uber, 12.89, Mere, Francoise, noel, 889')
 
 # APIKEY=key_here python -m unittest discover -s tests -p "*_tests.py"
