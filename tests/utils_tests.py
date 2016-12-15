@@ -63,20 +63,20 @@ class UtilsTests(unittest.TestCase):
         self.assertEqual(utils.slugify_string('58.com Inc..'), '58com-inc')
 
     def test_parse_url_string(self):
-        url_components = utils.parse_url_string('http://google.com')
-        self.assertEqual(url_components.scheme, 'http')
-        self.assertEqual(url_components.netloc, 'google.com')
-        self.assertEqual(url_components.path, '')
-        self.assertEqual(url_components.params, '')
-        self.assertEqual(url_components.query, '')
-        self.assertEqual(url_components.fragment, '')
-
         url_components = utils.parse_url_string('https://www.youtube.com/watch?v=3gkm7oafWxs')
         self.assertEqual(url_components.scheme, 'https')
         self.assertEqual(url_components.netloc, 'www.youtube.com')
         self.assertEqual(url_components.path, '/watch')
         self.assertEqual(url_components.params, '')
         self.assertEqual(url_components.query, 'v=3gkm7oafWxs')
+        self.assertEqual(url_components.fragment, '')
+
+        url_components = utils.parse_url_string('http://www.nytimes.com/2016/12/15/world/middleeast/aleppo-syria-evacuation-deal.html?hp&action=click&pgtype=Homepage&clickSource=story-heading&module=second-column-region&region=top-news&WT.nav=top-news&_r=0')
+        self.assertEqual(url_components.scheme, 'http')
+        self.assertEqual(url_components.netloc, 'www.nytimes.com')
+        self.assertEqual(url_components.path, '/2016/12/15/world/middleeast/aleppo-syria-evacuation-deal.html')
+        self.assertEqual(url_components.params, '')
+        self.assertEqual(url_components.query, 'hp&action=click&pgtype=Homepage&clickSource=story-heading&module=second-column-region&region=top-news&WT.nav=top-news&_r=0')
         self.assertEqual(url_components.fragment, '')
 
     def test_get_base_url(self):
