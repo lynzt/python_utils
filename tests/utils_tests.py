@@ -79,5 +79,8 @@ class UtilsTests(unittest.TestCase):
         self.assertEqual(url_components.query, 'v=3gkm7oafWxs')
         self.assertEqual(url_components.fragment, '')
 
+    def test_get_base_url(self):
+        self.assertEqual(utils.get_base_url('http', 'www.google.com'), 'http://www.google.com')
+        self.assertEqual(utils.get_base_url('https', 'www.youtube.com'), 'https://www.youtube.com')
 
 # APIKEY=key_here python -m unittest discover -s tests -p "*_tests.py"

@@ -33,6 +33,9 @@ def encode_uri_string(str):
 def parse_url_string(str):
     return urlparse.urlparse(str)
 
+def get_base_url(scheme, netloc):
+    return scheme + '://' +netloc
+
 def get_current_date():
     return datetime.datetime.now()
 
