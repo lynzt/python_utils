@@ -89,4 +89,10 @@ class UtilsTests(unittest.TestCase):
         self.assertEqual(utils.normalize_string('Federico F. Peña'), 'Federico F. Pena')
         self.assertEqual(utils.normalize_string(u'Montréal, über, 12.89, Mère, Françoise, noël, 889'), 'Montreal, uber, 12.89, Mere, Francoise, noel, 889')
 
+    def test_get_random_nbr_between(self): # TODO: this is lame... fix this
+        rand = utils.get_random_nbr_between(0, 5)
+        print rand
+        self.assertGreaterEqual(rand, 0)
+        self.assertLessEqual(rand, 5)
+
 # APIKEY=key_here python -m unittest discover -s tests -p "*_tests.py"

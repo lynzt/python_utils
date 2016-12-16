@@ -1,6 +1,7 @@
 import json
 import unidecode
 import requests
+import random
 import datetime
 import time
 import os
@@ -19,9 +20,9 @@ def request_json(url):
 
 def soupify_html(html, type):
     if type == 'lxml':
-        return BeautifulSoup(html, "lxml")
+        return BeautifulSoup(html, 'lxml')
     elif type == 'html5lib':
-        return BeautifulSoup(html, "html5lib")
+        return BeautifulSoup(html, 'html5lib')
 
 def get_and_soupify(url, type):
     html = request_html(url)
@@ -73,8 +74,11 @@ def get_fist_char(string):
     return string[0]
 
 def wait_n_seconds(seconds=1):
-    print "waiting %s seconds" % (seconds)
+    print 'waiting %s seconds' % (seconds)
     time.sleep(seconds) # sleep for passed number of seconds else default to 1 second
+
+def get_random_nbr_between(nbr1, nbr2):
+    return random.randint(nbr1, nbr2)
 
 def slugify_string(str):
     return slugify(unicode(str))
