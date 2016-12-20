@@ -71,9 +71,7 @@ def get_fist_char(string):
     return string[0]
 
 def wait_n_seconds(seconds=1):
-    print ("waittine")
-    print (seconds)
-    print ('waiting %s seconds') % (seconds)
+    print ("waiting %s seconds") % (seconds)
     time.sleep(seconds) # sleep for passed number of seconds else default to 1 second
 
 def get_random_nbr_between(nbr1, nbr2):
