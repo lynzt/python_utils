@@ -29,7 +29,6 @@ def get_and_soupify(url, type):
 
 def encode_uri_string(str):
     return urllib.parse.quote_plus(str)
-    # return urllib.parse.urlencode(str)
 
 def parse_url_string(str):
     return urllib.parse.urlparse(str)
@@ -72,6 +71,8 @@ def get_fist_char(string):
     return string[0]
 
 def wait_n_seconds(seconds=1):
+    print ("waittine")
+    print (seconds)
     print ('waiting %s seconds') % (seconds)
     time.sleep(seconds) # sleep for passed number of seconds else default to 1 second
 
