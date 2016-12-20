@@ -8,8 +8,8 @@ setup(name='python_utils',
     packages=['utils'],
     install_requires=[
         'awesome-slugify',
-        'unidecode'
-        'freezegun'
-        'requests'
+        'unidecode',
+        'freezegun',
+        'requests',
     ],
 )
