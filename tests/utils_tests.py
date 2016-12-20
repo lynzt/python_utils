@@ -91,7 +91,6 @@ class UtilsTests(unittest.TestCase):
 
     def test_get_random_nbr_between(self): # TODO: this is lame... fix this
         rand = utils.get_random_nbr_between(0, 5)
-        print rand
         self.assertGreaterEqual(rand, 0)
         self.assertLessEqual(rand, 5)
 
