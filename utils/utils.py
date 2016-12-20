@@ -6,8 +6,7 @@ import datetime
 import time
 import os
 import urllib
-import urlparse
-from slugify import slugify
+from slugify import Slugify
 from bs4 import BeautifulSoup
 
 def request_html(url):
@@ -29,10 +28,11 @@ def get_and_soupify(url, type):
     return soupify_html(html, type)
 
 def encode_uri_string(str):
-    return urllib.quote_plus(str)
+    return urllib.parse.quote_plus(str)
+    # return urllib.parse.urlencode(str)
 
 def parse_url_string(str):
-    return urlparse.urlparse(str)
+    return urllib.parse.urlparse(str)
 
 def get_base_url(scheme, netloc):
     return scheme + '://' +netloc
@@ -44,8 +44,6 @@ def get_current_year():
     return (get_current_date()).year
 
 def normalize_string(u_str):
-    if _is_string(u_str):
-        u_str = unicode(u_str, 'utf-8')
     return unidecode.unidecode(u_str)
 
 def _is_string(x):
@@ -81,4 +79,9 @@ def get_random_nbr_between(nbr1, nbr2):
     return random.randint(nbr1, nbr2)
 
 def slugify_string(str):
-    return slugify(unicode(str))
+    my_slugify = Slugify()
+    my_slugify.pretranslate = {'AT&T':'att'}
+    my_slugify.to_lower=True
+    return my_slugify(str)
+
+    # return slugify(str, pretranslate={'AT&T':'att'}, to_lower=True)

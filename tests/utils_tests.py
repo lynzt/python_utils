@@ -7,7 +7,7 @@ from utils import utils
 
 class UtilsTests(unittest.TestCase):
     def test_soupify_html(self):
-        soup = utils.soupify_html('<html><title>testing</title></html>', 'lxml')
+        soup = utils.soupify_html('<html><title>testing</title></html>', 'html5lib')
         self.assertEqual(soup.title.string, 'testing')
 
     def test_get_current_date(self):
@@ -49,6 +49,7 @@ class UtilsTests(unittest.TestCase):
     def test_encode_uri_string(self):
         self.assertEqual(utils.encode_uri_string('abc'), 'abc')
         self.assertEqual(utils.encode_uri_string('AT&T Inc.'), 'AT%26T+Inc.')
+        # self.assertEqual(utils.encode_uri_string('AT&T Inc.'), 'AT%26T+Inc.')
 
     def test_get_fist_char(self):
         self.assertEqual(utils.get_fist_char('abc'), 'a')
@@ -61,7 +62,7 @@ class UtilsTests(unittest.TestCase):
         self.assertEqual(utils.slugify_string('hank green'), 'hank-green')
         self.assertEqual(utils.slugify_string('AT&T Inc.'), 'att-inc')
         self.assertEqual(utils.slugify_string('A10 Networks, Inc.'), 'a10-networks-inc')
-        self.assertEqual(utils.slugify_string('58.com Inc..'), '58com-inc')
+        self.assertEqual(utils.slugify_string('58.com Inc..'), '58-com-inc')
 
     def test_parse_url_string(self):
         url_components = utils.parse_url_string('https://www.youtube.com/watch?v=3gkm7oafWxs')
