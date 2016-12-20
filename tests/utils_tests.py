@@ -9,6 +9,7 @@ class UtilsTests(unittest.TestCase):
     def test_soupify_html(self):
         soup = utils.soupify_html('<html><title>testing</title></html>', 'html5lib')
         self.assertEqual(soup.title.string, 'testing')
+        seconds = 5
 
     def test_get_current_date(self):
         with freeze_time("2012-01-14"):
