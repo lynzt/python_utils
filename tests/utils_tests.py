@@ -50,7 +50,6 @@ class UtilsTests(unittest.TestCase):
     def test_encode_uri_string(self):
         self.assertEqual(utils.encode_uri_string('abc'), 'abc')
         self.assertEqual(utils.encode_uri_string('AT&T Inc.'), 'AT%26T+Inc.')
-        # self.assertEqual(utils.encode_uri_string('AT&T Inc.'), 'AT%26T+Inc.')
 
     def test_get_fist_char(self):
         self.assertEqual(utils.get_fist_char('abc'), 'a')
@@ -64,6 +63,7 @@ class UtilsTests(unittest.TestCase):
         self.assertEqual(utils.slugify_string('AT&T Inc.'), 'att-inc')
         self.assertEqual(utils.slugify_string('A10 Networks, Inc.'), 'a10-networks-inc')
         self.assertEqual(utils.slugify_string('58.com Inc..'), '58-com-inc')
+        self.assertEqual(utils.slugify_string('Yum! Brands, Inc.'), 'yum-brands-inc')
 
     def test_parse_url_string(self):
         url_components = utils.parse_url_string('https://www.youtube.com/watch?v=3gkm7oafWxs')
@@ -91,9 +91,16 @@ class UtilsTests(unittest.TestCase):
         self.assertEqual(utils.normalize_string('Federico F. Peña'), 'Federico F. Pena')
         self.assertEqual(utils.normalize_string(u'Montréal, über, 12.89, Mère, Françoise, noël, 889'), 'Montreal, uber, 12.89, Mere, Francoise, noel, 889')
 
-    def test_get_random_nbr_between(self): # TODO: this is lame... fix this
+    def test_get_random_nbr_between(self):
         rand = utils.get_random_nbr_between(0, 5)
         self.assertGreaterEqual(rand, 0)
         self.assertLessEqual(rand, 5)
+
+    # def test_temp(self):
+    #     utils.wait_n_seconds(2)
+    #     utils.wait_n_seconds(2, 'abc')
+    #     obj = {'f': 'harry', 'l': 'potter'}
+    #     utils.wait_n_seconds(2, obj)
+        
 
 # APIKEY=key_here python -m unittest discover -s tests -p "*_tests.py"

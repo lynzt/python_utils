@@ -70,8 +70,8 @@ def json_pretty_print(json_str):
 def get_fist_char(string):
     return string[0]
 
-def wait_n_seconds(seconds=1):
-    print ('waiting %s seconds' % seconds)
+def wait_n_seconds(seconds=1, msg=''):
+    print ('wait %s seconds || %s' % (seconds, msg))
     time.sleep(seconds) # sleep for passed number of seconds else default to 1 second
 
 def get_random_nbr_between(nbr1, nbr2):
