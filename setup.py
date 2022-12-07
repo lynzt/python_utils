@@ -9,7 +9,7 @@ setup(name='python_utils',
     install_requires=[
         'awesome-slugify==1.6.5',
         'beautifulsoup4==4.6.0',
-        'certifi==2017.11.5',
+        'certifi==2022.12.7',
         'chardet==3.0.4',
         'freezegun==0.3.9',
         'html5lib==0.999999999',
